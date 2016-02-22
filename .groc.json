@@ -1,0 +1,4 @@
+{
+  "glob": ["addon/**/*.js", "app/**/*.js", "README.md"],
+  "github": true
+}
