@@ -1,6 +1,6 @@
 # Ember-cli-dispatch [![Build Status](https://travis-ci.org/tomasbasham/ember-cli-dispatch.svg?branch=master)](https://travis-ci.org/tomasbasham/ember-cli-dispatch)
 
-An [Ember CLI](http://www.ember-cli.com/) addon to extend computed properties with asynchronous values.
+An [Ember CLI](https://ember-cli.com/) addon to extend computed properties with asynchronous values.
 
 Computed properties are really handy for taking one or more static properties, or in fact other computed properties, and transforming their values. However it is often the case that a value is not immediately present and may need to be fetch asynchronously. This prevents us from using computed properties because we cannot return a future value. To accomplish this currently we could return a promise from a computed property and create, potentially, a long chain of `then`'s and `catch`'s to then finally compute the value. This is very cumbersome and will not lend itself well if required within template logic.
 
@@ -102,18 +102,18 @@ This shows a very basic implementation of a computed property macro that passes 
 
 ### Installation
 
-* `git clone` this repository
+* `git clone <repository-url>` this repository
+* `cd ember-cli-dispatch`
 * `npm install`
-* `bower install`
 
 ### Running
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+* `ember serve`
+* Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ### Running Tests
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
+* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
 * `ember test`
 * `ember test --server`
 
@@ -121,4 +121,4 @@ This shows a very basic implementation of a computed property macro that passes 
 
 * `ember build`
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
