@@ -1,18 +1,19 @@
-import Ember from 'ember';
-import computedReduce from '../../../utils/computed-reduce';
-import { module, test } from 'qunit';
+import EmberObject from '@ember/object';
 
-const {
-  get
-} = Ember;
+import computedReduce from 'dummy/utils/computed-reduce';
+
+import { A } from '@ember/array';
+import { get } from '@ember/object';
+import { module, test } from 'qunit';
+import { Promise } from 'rsvp';
 
 module('Unit | Utility | computed reduce');
 
 test('it returns a default value', function(assert) {
-  let subject = Ember.Object.extend({
-    dataProperty: Ember.A([1, 2, 3, 4, 5]),
+  let subject = EmberObject.extend({
+    dataProperty: A([1, 2, 3, 4, 5]),
     myProperty: computedReduce('dataProperty', function() {
-      return new Ember.RSVP.Promise();
+      return new Promise();
     }, 'default')
   }).create();
 
@@ -20,8 +21,8 @@ test('it returns a default value', function(assert) {
 });
 
 test('it returns a reduced value', function(assert) {
-  let subject = Ember.Object.extend({
-    dataProperty: Ember.A([1, 2, 3, 4, 5]),
+  let subject = EmberObject.extend({
+    dataProperty: A([1, 2, 3, 4, 5]),
     myProperty: computedReduce('dataProperty', function(cumulativeValue, value) {
       return cumulativeValue + value;
     }, 'default')

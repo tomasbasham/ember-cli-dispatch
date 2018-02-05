@@ -1,10 +1,7 @@
-import Ember from 'ember';
+import EmberError from '@ember/error';
 
-const {
-  computed,
-  get,
-  set
-} = Ember;
+import { computed, get, set } from '@ember/object';
+import { Promise } from 'rsvp';
 
 /*
  * Utility method, returning an ember computed
@@ -35,7 +32,7 @@ export default function computedPromise(...args) {
   }
 
   if (typeof propertyFunction !== 'function') {
-    throw new Ember.Error('Computed Promise declared without a property function');
+    throw new EmberError('Computed Promise declared without a property function');
   }
 
   // The computed promise function.
@@ -52,7 +49,7 @@ export default function computedPromise(...args) {
     };
 
     // Resolve a promise and catch any errors.
-    const promise = new Ember.RSVP.Promise((resolve) => {
+    const promise = new Promise((resolve) => {
       resolve(propertyFunction.apply(this));
     }).then(function(data) {
       setProperty(propertyName, data);

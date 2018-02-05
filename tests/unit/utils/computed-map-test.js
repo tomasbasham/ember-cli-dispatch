@@ -1,18 +1,19 @@
-import Ember from 'ember';
-import computedMap from '../../../utils/computed-map';
-import { module, test } from 'qunit';
+import EmberObject from '@ember/object';
 
-const {
-  get
-} = Ember;
+import computedMap from 'dummy/utils/computed-map';
+
+import { A } from '@ember/array';
+import { get } from '@ember/object';
+import { module, test } from 'qunit';
+import { Promise } from 'rsvp';
 
 module('Unit | Utility | computed map');
 
 test('it returns a default value', function(assert) {
-  let subject = Ember.Object.extend({
-    dataProperty: Ember.A([1, 2, 3, 4, 5]),
+  let subject = EmberObject.extend({
+    dataProperty: A([1, 2, 3, 4, 5]),
     myProperty: computedMap('dataProperty', function() {
-      return new Ember.RSVP.Promise();
+      return new Promise();
     }, 'default')
   }).create();
 
@@ -20,8 +21,8 @@ test('it returns a default value', function(assert) {
 });
 
 test('it returns a mapped value', function(assert) {
-  let subject = Ember.Object.extend({
-    dataProperty: Ember.A([1, 2, 3, 4, 5]),
+  let subject = EmberObject.extend({
+    dataProperty: A([1, 2, 3, 4, 5]),
     myProperty: computedMap('dataProperty', function(value) {
       return value * 2;
     }, 'default')

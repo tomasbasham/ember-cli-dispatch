@@ -1,4 +1,4 @@
-# Ember-cli-dispatch [![Build Status](https://travis-ci.org/tomasbasham/ember-cli-dispatch.svg?branch=master)](https://travis-ci.org/tomasbasham/ember-cli-dispatch)
+# ember-cli-dispatch [![Build Status](https://travis-ci.org/tomasbasham/ember-cli-dispatch.svg?branch=master)](https://travis-ci.org/tomasbasham/ember-cli-dispatch)
 
 An [Ember CLI](https://ember-cli.com/) addon to extend computed properties with
 asynchronous values.
@@ -40,12 +40,14 @@ be used until the internal promise resolves.
 
 ```JavaScript
 // app/controllers/application.js
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import $ from 'jquery';
+
 import computedPromise from 'ember-cli-dispatch/utils/computed-promise';
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   serverResponse: computedPromise(function() {
-    return Ember.$.getJSON('https://www.example.com/response.json')
+    return $.getJSON('https://www.example.com/response.json')
   }, 'fetching...')
 });
 ```
@@ -68,10 +70,10 @@ to reduce it to a single value.
 
 ```JavaScript
 // app/controllers/application.js
-import Ember from 'ember';
+import Controller from '@ember/controller';
 import computedMap from 'ember-cli-dispatch/utils/computed-map';
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   scores: [1, 2, 3, 4, 5],
 
   doubleScores: computedMap('scores', function(score) {
@@ -87,10 +89,10 @@ the values within the `scores` array.
 
 ```JavaScript
 // app/controllers/application.js
-import Ember from 'ember';
+import Controller from '@ember/controller';
 import computedReduce from 'ember-cli-dispatch/utils/computed-reduce';
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   scores: [1, 2, 3, 4, 5],
 
   totalScores: computedReduce('scores', function(cumulativeTotal, score) {
@@ -111,13 +113,12 @@ To do this you need to import the `computedPromise` macro.
 
 ```JavaScript
 // app/utils/computed-macro.js
-import Ember from 'ember';
 import computedPromise from 'ember-cli-dispatch/utils/computed-promise';
+import { get } from '@ember/object';
 
-export default function computedMacro(propertyName, propertyFunction, defaultValue) {
+export default function computedMacro(propertyName, defaultValue) {
   return computedPromise(`${propertyName}.[]`, function() {
-    const property = this.get(propertyName);
-    return property;
+    return get(this, propertyName);
   }, defaultValue);
 };
 ```

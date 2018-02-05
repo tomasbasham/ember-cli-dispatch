@@ -1,9 +1,5 @@
-import Ember from 'ember';
 import computedPromise from 'ember-cli-dispatch/utils/computed-promise';
-
-const {
-  get
-} = Ember;
+import { get } from '@ember/object';
 
 /*
  * Utility method, returning an ember computed

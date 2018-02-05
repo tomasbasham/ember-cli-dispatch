@@ -1,21 +1,22 @@
-import Ember from 'ember';
-import computedPromise from '../../../utils/computed-promise';
-import { module, test } from 'qunit';
+import EmberError from '@ember/error';
+import EmberObject from '@ember/object';
 
-const {
-  get
-} = Ember;
+import computedPromise from 'dummy/utils/computed-promise';
+
+import { get } from '@ember/object';
+import { module, test } from 'qunit';
+import { Promise } from 'rsvp';
 
 module('Unit | Utility | computed promise');
 
 test('it throws an exception if a function is not present', function(assert) {
-  assert.throws(computedPromise, Ember.Error, 'Computed Promise declared without a property function');
+  assert.throws(computedPromise, EmberError, 'Computed Promise declared without a property function');
 });
 
 test('it returns a default value', function(assert) {
-  let object = Ember.Object.extend({
+  let object = EmberObject.extend({
     myProperty: computedPromise(function() {
-      return new Ember.RSVP.Promise();
+      return new Promise();
     }, 'default')
   }).create();
 
