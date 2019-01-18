@@ -16,6 +16,11 @@ This addon implements a computed property macro that works internally with
 promises. Each computed property can be assigned a default value that will be
 used until the promise resolves and the computed property's value is updated.
 
+## Compatibility
+
+* Ember.js v2.18 or above
+* Ember CLI v2.13 or above
+
 ## Installation
 
 From within your Ember CLI project directory run:
@@ -127,29 +132,6 @@ This shows a very basic implementation of a computed property macro that passes
 back the value of the specified property. This of course can be extended to
 perform whatever operation is required by your applications.
 
-## Development
+## License
 
-### Installation
-
-* `git clone <repository-url>` this repository
-* `cd ember-cli-dispatch`
-* `npm install`
-
-### Running
-
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-### Running Tests
-
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember
-  versions)
-* `ember test`
-* `ember test --server`
-
-### Building
-
-* `ember build`
-
-For more information on using ember-cli, visit
-[https://ember-cli.com/](https://ember-cli.com/).
+This project is licensed under the [MIT License](LICENSE.md).
