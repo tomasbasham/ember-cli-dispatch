@@ -1,4 +1,4 @@
-# ember-cli-dispatch [![Build Status](https://travis-ci.com/tomasbasham/ember-cli-dispatch.svg?branch=master)](https://travis-ci.com/tomasbasham/ember-cli-dispatch)
+# ember-cli-dispatch [![Build Status](https://travis-ci.com/tomasbasham/ember-cli-dispatch.svg?branch=master)](https://travis-ci.com/tomasbasham/ember-cli-dispatch) [![Maintainability](https://api.codeclimate.com/v1/badges/55f72c38f385fc50973f/maintainability)](https://codeclimate.com/github/tomasbasham/ember-cli-dispatch/maintainability)
 
 An [Ember CLI](https://ember-cli.com/) addon to extend computed properties with
 asynchronous values.
